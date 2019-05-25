@@ -1,0 +1,49 @@
+.question-row{
+	margin-bottom: 2%;
+}
+.checkbox-row{
+	padding-left: 1%;
+}
+.col-search-input{
+	display: block;
+	width: 100%;
+}
+.dataTables_info{
+	padding-left: 1% !important;
+}
+.dataTables_paginate{
+	margin-right: 2%;
+}
+.dataTables_length{
+	margin-right: 3%;
+}
+.info-box{
+	padding:50px;
+}
+.box1,.box2,.box3,.box4,.box5,.box6{
+	padding:30px;
+}
+.box1{
+	background-color: #00c0ef;
+}
+.box2{
+	background-color: #dd4b39; 
+}
+.box3{
+	background-color: #00a65a; 
+}
+.box4{
+	background-color: #f39c12;  
+}
+.box5{
+	background-color: #f56954; 
+}
+.box6{
+	background-color: #d2d6de;
+}
+.box7{
+	background-color: #5c6bc0;
+}
+.box8{
+	background-color: #26a69a;
+}
