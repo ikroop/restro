@@ -13,6 +13,11 @@
 
     <!-- CSS Global -->
     <link href="<?php echo base_url()?>css/styles.css" rel="stylesheet">
+    <link href="<?php echo base_url()?>css/datepicker.min.css" rel="stylesheet">
+    <script src="<?php echo base_url()?>plugins/jquery/jquery-1.12.4.min.js"></script>
+    <script src="<?php echo base_url()?>bootstrap/js/bootstrap.min.js"></script>
+    <script src="<?php echo base_url()?>js/datepicker.min.js"></script>
+
 
   </head>
   <body data-spy="scroll" data-target=".navbar" data-offset="70">
@@ -38,7 +43,7 @@
           	<div class="col-sm-8">
 
 	            <div class="welcome_content">
-	              <h1 class="welcome_content_heading"><img src="img/logo1.png" class="col-md-6 text-center center-block img-responsive"></h1>
+	              <h1 class="welcome_content_heading"><img src="<?php echo base_url()?>img/logo1.png" class="col-md-6 text-center center-block img-responsive"></h1>
 	              <p class="welcome_content_subheading">Bar & Restro Lounge</p>
 	              <ul class="welcome_content_logo">
 	                <li><i class="icon ion-ios-minus-empty"></i></li>
@@ -73,14 +78,14 @@
 				  <!-- Email -->
 				  <div class="form-group">
 				    <label for="date" class="sr-only">Birth Date</label>
-				    <input type="date" name="birthdate" class="form-control" id="birthdate" placeholder="Select your Birth date " value="<?php echo set_value('birthdate')?>">
+				    <input class="form-control" id="birthdate" data-toggle="birthdate" value="<?php echo set_value('birthdate')?>">
 				    <span class="help-block"><?php echo form_error('birthdate');?></span>
 				  </div>
 
 				  <!-- Email -->
 				  <div class="form-group">
 				    <label for="anniversary_date" class="sr-only">Anniversary Date</label>
-				    <input type="date" name="anniversary_date" class="form-control" id="anniversary_date" placeholder="Select your Anniversary Date" value="<?php echo set_value('Anniversary')?>">
+				    <input class="form-control" id="anniversary_date" data-toggle="anniversary_date" value="<?php echo set_value('anniversary_date')?>" value="<?php echo set_value('anniversary_date')?>">
 				    <span class="help-block"><?php echo form_error('anniversary_date');?></span>
 				  </div>
 
@@ -105,13 +110,19 @@
       <div class="welcome_bg"></div>
     </section>
 
-    <script src="<?php echo base_url()?>plugins/jquery/jquery-1.12.4.min.js"></script>
-    <script src="<?php echo base_url()?>bootstrap/js/bootstrap.min.js"></script>
-   
     
-
     <script src="<?php echo base_url()?>js/custom.js"></script>
 
   </body>
 
 </html>
+<script type="text/javascript">
+	$('[data-toggle="birthdate"]').datepicker({
+	    'format': 'dd-mm-yyyy',
+	    'setDate' : <?php echo empty(set_value('birthdate')) ?  '01-01-1994' : set_value('birthdate');?>,
+	});
+
+	$('[data-toggle="anniversary_date"]').datepicker({
+	    format: 'dd-mm-yyyy'
+	});
+</script>

@@ -483,5 +483,3 @@ var dishes = (function() {
 //     });
 
 // })();
-
-

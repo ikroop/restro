@@ -99,7 +99,7 @@
 
                 <li class="nav-item dropdown dropdown-user">
                     <a href="#" class="navbar-nav-link d-flex align-items-center dropdown-toggle" data-toggle="dropdown">
-                        <img src="<?php echo base_url()?>images/demo/users/face9.jpg" class="rounded-circle mr-2" height="34" alt="">
+                        <img src="<?php echo base_url()?>images/logo1.png" class="rounded-circle mr-2" height="34" alt="">
                         <span><?php echo ucwords($this->session->userdata('username'))?></span>
                     </a>
 
@@ -141,7 +141,7 @@
                     <div class="card-body">
                         <div class="media">
                             <div class="mr-3">
-                                <a href="#"><img src="<?php echo base_url(); ?>images/demo/users/face9.jpg" width="38" height="38" class="rounded-circle" alt=""></a>
+                                <a href="#"><img src="<?php echo base_url()?>images/logo1.png" width="38" height="38" class="rounded-circle" alt=""></a>
                             </div>
 
                             <div class="media-body">
