@@ -98,7 +98,7 @@ class Admin extends CI_Controller {
         // Fetch member's records
         $memData = $this->AdminModel->getCustomerDetailsRows($_POST);
         
-        // echo $this->db->last_query();exit;
+    
         $i = $_POST['start'];
         foreach($memData as $member){
 

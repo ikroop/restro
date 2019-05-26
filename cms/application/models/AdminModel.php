@@ -88,8 +88,9 @@ class AdminModel extends CI_Model {
         return $this->db->get('rating')->result_array();
     } 
     public function getDashboardCountData(){
-        $this->db->select('COUNT(customer_id) as no_of_customer,SUM(question_1) as question_1,SUM(question_2) as question_2,SUM(question_3) as question_3,SUM(question_4) as question_4,SUM(question_5) as question_5,SUM(question_6) as question_6,SUM(question_7) as question_7');
-        return $this->db->get('rating')->row_array();
+        $this->db->select('COUNT(c.id) as number_of_customer,COUNT(customer_id) as number_of_feedback,SUM(question_1) as question_1,SUM(question_2) as question_2,SUM(question_3) as question_3,SUM(question_4) as question_4,SUM(question_5) as question_5,SUM(question_6) as question_6,SUM(question_7) as question_7');
+        $this->db->join('customer c','c.id = r.customer_id','right outer');
+        return $this->db->get('rating r')->row_array();
     }  
     public function getDailyRatingDetails(){
         $this->db->select('SUM(question_1) as question_1,SUM(question_2) as question_2,SUM(question_3) as question_3,SUM(question_4) as question_4,SUM(question_5) as question_5,SUM(question_6) as question_6,SUM(question_7) as question_7,COUNT(customer_id) as count,created_at'); 

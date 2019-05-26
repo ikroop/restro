@@ -20,7 +20,7 @@
 .info-box{
 	padding:50px;
 }
-.box1,.box2,.box3,.box4,.box5,.box6{
+.box1,.box2,.box3,.box4,.box5,.box6,.box7,.box8,.box10{
 	padding:30px;
 }
 .box1{
@@ -46,4 +46,7 @@
 }
 .box8{
 	background-color: #26a69a;
+}
+.box10{
+	background-color: #f5f5f5;
 }

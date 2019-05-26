@@ -12,8 +12,21 @@
                         <span class="info-box-icon bg-aqua"><i class="ion ion-ios-gear-outline"></i></span>
 
                         <div class="info-box-content">
-                          <span class="info-box-text">No Of Customer Review</span>
-                          <h3 class="info-box-number"><?php echo $dashboard['no_of_customer']?></h3>
+                          <span class="info-box-text">No Of Customer</span>
+                          <h3 class="info-box-number"><?php echo $dashboard['number_of_customer']?></h3>
+                        </div>
+                        <!-- /.info-box-content -->
+                      </div>
+                      <!-- /.info-box -->
+                    </div>
+
+                    <div class="col-md-2 col-sm-6 col-xs-12">
+                      <div class="info-box box10">
+                        <span class="info-box-icon bg-aqua"><i class="ion ion-ios-gear-outline"></i></span>
+
+                        <div class="info-box-content">
+                          <span class="info-box-text">No Of Feedback</span>
+                          <h3 class="info-box-number"><?php echo $dashboard['number_of_feedback']?></h3>
                         </div>
                         <!-- /.info-box-content -->
                       </div>
@@ -28,7 +41,7 @@
 
                         <div class="info-box-content">
                           <span class="info-box-text">Food</span>
-                          <h3 class="info-box-number"><?php echo round(($dashboard['question_1'] / ($dashboard['no_of_customer'] * 5) * 5),2)?></h3>
+                          <h3 class="info-box-number"><?php echo round(($dashboard['question_1'] / ($dashboard['number_of_customer'] * 5) * 5),2)?></h3>
                         </div>
                         <!-- /.info-box-content -->
                       </div>
@@ -42,8 +55,8 @@
                         <span class="info-box-icon bg-red"><i class="fa fa-google-plus"></i></span>
 
                         <div class="info-box-content">
-                          <span class="info-box-text">Room</span>
-                          <h3 class="info-box-number"><?php echo round(($dashboard['question_2'] / ($dashboard['no_of_customer'] * 5) * 5),2)?></h3>
+                          <span class="info-box-text">Cleanliness</span>
+                          <h3 class="info-box-number"><?php echo round(($dashboard['question_2'] / ($dashboard['number_of_customer'] * 5) * 5),2)?></h3>
                         </div>
                         <!-- /.info-box-content -->
                       </div>
@@ -58,7 +71,7 @@
 
                         <div class="info-box-content">
                           <span class="info-box-text">Service</span>
-                          <h3 class="info-box-number"><?php echo round(($dashboard['question_3'] / ($dashboard['no_of_customer'] * 5) * 5),2)?></h3>
+                          <h3 class="info-box-number"><?php echo round(($dashboard['question_3'] / ($dashboard['number_of_customer'] * 5) * 5),2)?></h3>
                         </div>
                         <!-- /.info-box-content -->
                       </div>
@@ -76,7 +89,7 @@
 
                         <div class="info-box-content">
                           <span class="info-box-text">Friendliness </span>
-                          <h3 class="info-box-number"><?php echo round(($dashboard['question_4'] / ($dashboard['no_of_customer'] * 5) * 5),2)?></h3>
+                          <h3 class="info-box-number"><?php echo round(($dashboard['question_4'] / ($dashboard['number_of_customer'] * 5) * 5),2)?></h3>
                         </div>
                         <!-- /.info-box-content -->
                       </div>
@@ -89,7 +102,7 @@
 
                         <div class="info-box-content">
                           <span class="info-box-text">Apperance</span>
-                          <h3 class="info-box-number"><?php echo round(($dashboard['question_5'] / ($dashboard['no_of_customer'] * 5) * 5),2)?></h3>
+                          <h3 class="info-box-number"><?php echo round(($dashboard['question_5'] / ($dashboard['number_of_customer'] * 5) * 5),2)?></h3>
                         </div>
                         <!-- /.info-box-content -->
                       </div>
@@ -106,7 +119,7 @@
 
                         <div class="info-box-content">
                           <span class="info-box-text">Money</span>
-                          <h3 class="info-box-number"><?php echo round(($dashboard['question_6'] / ($dashboard['no_of_customer'] * 5) * 5),2)?></h3>
+                          <h3 class="info-box-number"><?php echo round(($dashboard['question_6'] / ($dashboard['number_of_customer'] * 5) * 5),2)?></h3>
                         </div>
                         <!-- /.info-box-content -->
                       </div>
@@ -119,7 +132,7 @@
 
                         <div class="info-box-content">
                           <span class="info-box-text">Design</span>
-                          <h3 class="info-box-number"><?php echo round(($dashboard['question_7'] / ($dashboard['no_of_customer'] * 5) * 5),2)?></h3>
+                          <h3 class="info-box-number"><?php echo round(($dashboard['question_7'] / ($dashboard['number_of_customer'] * 5) * 5),2)?></h3>
                         </div>
                         <!-- /.info-box-content -->
                       </div>
