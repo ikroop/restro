@@ -25,14 +25,23 @@ class Admin extends CI_Controller {
 		if($this->form_validation->run()){
 			$input_data = $this->input->post();
 
-			$data = array('name'		=>$input_data['name'],
+
+			$filter     = array('mobile'=>$input_data['mobile']);
+			$CheckExists = $this->Admin_model->getCustomerDetails($filter);
+
+			if($CheckExists){
+				$data['registration_id'] = $CheckExists['id'];
+			}else{
+				$data = array('name'		=>$input_data['name'],
 						  'email'		=>$input_data['email'],
 						  'mobile'		=>$input_data['mobile'],
-						  'birthdate'	=>$input_data['birthdate'],
-						  'anniversary_date' =>$input_data['anniversary_date']	
+						  'birthdate'	=>date('Y-m-d',strtotime($input_data['birthdate'])),
+						  'anniversary_date' =>date('Y-m-d',strtotime($input_data['anniversary_date']))	
 						);
 
-			$data['registration_id'] = $this->Admin_model->addRegistration($data);
+				$data['registration_id'] = $this->Admin_model->addRegistration($data);
+			}
+
 			if($data){
 				$this->load->view('feedback',$data);
 			}else{

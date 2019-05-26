@@ -17,6 +17,7 @@
     <script src="<?php echo base_url()?>plugins/jquery/jquery-1.12.4.min.js"></script>
     <script src="<?php echo base_url()?>bootstrap/js/bootstrap.min.js"></script>
     <script src="<?php echo base_url()?>js/datepicker.min.js"></script>
+    <script src="<?php echo base_url()?>js/datepicker.en.js"></script>
     <!-- hello -->
     <!-- jay -->
 
@@ -79,14 +80,14 @@
 				  <!-- Email -->
 				  <div class="form-group">
 				    <label for="date" class="sr-only">Birth Date</label>
-				    <input class="form-control" id="birthdate" data-toggle="birthdate" value="<?php echo set_value('birthdate')?>" name="birthdate">
-				    <span class="help-block"><?php echo form_error('birthdate');?></span>
+				    <input type='text' class="birthdate form-control"  name="birthdate" value="<?php echo set_value('birthdate')?>" />
+				    <span class="help-block"><?php echo form_error('Birthhdate');?></span>
 				  </div>
 
 				  <!-- Email -->
 				  <div class="form-group">
 				    <label for="anniversary_date" class="sr-only">Anniversary Date</label>
-				    <input class="form-control" id="anniversary_date" data-toggle="anniversary_date" value="<?php echo set_value('anniversary_date')?>" value="<?php echo set_value('anniversary_date')?>" name="anniversary_date">
+				    <input type='text' class="anniversary_date form-control"  name="anniversary_date"  value="<?php echo set_value('anniversary_date')?>"/>
 				    <span class="help-block"><?php echo form_error('anniversary_date');?></span>
 				  </div>
 
