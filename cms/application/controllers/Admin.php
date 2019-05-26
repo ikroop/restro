@@ -42,12 +42,24 @@ class Admin extends CI_Controller {
                 $this->session->set_userdata($logdata);
                 // $data['dashboard'] = $this->AdminModel->getDashboardData();
                 
-                $data['dashboard'] = $this->AdminModel->getDashboardCountData();
+                $dashboard = $this->AdminModel->getDashboardCountData();
+
+                $data['dashboard']['number_of_customer'] = isset($dashboard_data['number_of_customer']) ? $dashboard_data['number_of_customer'] : 0;
+                $data['dashboard']['number_of_feedback'] = isset($dashboard_data['number_of_feedback']) ? $dashboard_data['number_of_feedback'] : 0;
+                $data['dashboard']['question_1']        = isset($dashboard_data['question_1']) ?  round(($dashboard['question_1'] / ($dashboard['number_of_customer'] * 5) * 5),2)  : 0;
+                $data['dashboard']['question_2'] = isset($dashboard_data['question_2']) ?  round(($dashboard['question_2'] / ($dashboard['number_of_customer'] * 5) * 5),2) : 0;
+                $data['dashboard']['question_3'] = isset($dashboard_data['question_3']) ?  round(($dashboard['question_3'] / ($dashboard['number_of_customer'] * 5) * 5),2) : 0;
+                $data['dashboard']['question_4'] = isset($dashboard_data['question_4']) ?  round(($dashboard['question_4'] / ($dashboard['number_of_customer'] * 5) * 5),2) : 0;
+                $data['dashboard']['question_5'] = isset($dashboard_data['question_5']) ?  round(($dashboard['question_5'] / ($dashboard['number_of_customer'] * 5) * 5),2) : 0;
+                $data['dashboard']['question_6'] = isset($dashboard_data['question_6']) ?  round(($dashboard['question_6'] / ($dashboard['number_of_customer'] * 5) * 5),2) : 0;
+                $data['dashboard']['question_7'] = isset($dashboard_data['question_7']) ?  round(($dashboard['question_7'] / ($dashboard['number_of_customer'] * 5) * 5),2) : 0;
+
                 
                 $first_date = date('Y-m-01');
                 $last_date  = date('Y-m-t');
 
                 $rating_data = $this->AdminModel->getDashboardData($first_date,$last_date);
+
 
                 $rating = array();
                 $i = 0;
@@ -156,7 +168,17 @@ class Admin extends CI_Controller {
     }
 
     public function dashboard(){
-        $data['dashboard'] = $this->AdminModel->getDashboardCountData();
+        $dashboard_data = $this->AdminModel->getDashboardCountData();
+
+        $data['dashboard']['number_of_customer'] = isset($dashboard_data['number_of_customer']) ? $dashboard_data['number_of_customer'] : 0;
+        $data['dashboard']['number_of_feedback'] = isset($dashboard_data['number_of_feedback']) ? $dashboard_data['number_of_feedback'] : 0;
+        $data['dashboard']['question_1']        = isset($dashboard_data['question_1']) ?  round(($dashboard['question_1'] / ($dashboard['number_of_customer'] * 5) * 5),2)  : 0;
+        $data['dashboard']['question_2'] = isset($dashboard_data['question_2']) ?  round(($dashboard['question_2'] / ($dashboard['number_of_customer'] * 5) * 5),2) : 0;
+        $data['dashboard']['question_3'] = isset($dashboard_data['question_3']) ?  round(($dashboard['question_3'] / ($dashboard['number_of_customer'] * 5) * 5),2) : 0;
+        $data['dashboard']['question_4'] = isset($dashboard_data['question_4']) ?  round(($dashboard['question_4'] / ($dashboard['number_of_customer'] * 5) * 5),2) : 0;
+        $data['dashboard']['question_5'] = isset($dashboard_data['question_5']) ?  round(($dashboard['question_5'] / ($dashboard['number_of_customer'] * 5) * 5),2) : 0;
+        $data['dashboard']['question_6'] = isset($dashboard_data['question_6']) ?  round(($dashboard['question_6'] / ($dashboard['number_of_customer'] * 5) * 5),2) : 0;
+        $data['dashboard']['question_7'] = isset($dashboard_data['question_7']) ?  round(($dashboard['question_7'] / ($dashboard['number_of_customer'] * 5) * 5),2) : 0;
 
         if(isset($_POST) && !empty($_POST)){
             $first_date = date('Y-m-d',strtotime($this->input->post('start_date')));
@@ -168,11 +190,11 @@ class Admin extends CI_Controller {
         
         $rating_data = $this->AdminModel->getDashboardData($first_date,$last_date);
         
-        $rating = array();
+
+        $daily_rating = array();
         $i = 0;
         $count = 0;
         foreach($rating_data as $row){
-            
             $daily_rating[$i]['created_at'] = date('d-m-Y',strtotime($row['created_at']));
             $daily_rating[$i]['question_1'] = round(($row['question_1'] * 5) / ($row['no_of_customer'] * 9),2) ;
             $daily_rating[$i]['question_2'] = round(($row['question_2'] * 5) / ($row['no_of_customer'] * 9),2) ;
@@ -184,8 +206,6 @@ class Admin extends CI_Controller {
             $i++;
         }
           
-
-
         $data['rating']    = $daily_rating;
         $data['main_view'] = 'dashboard';
         $this->load->view('base_template_admin',$data);

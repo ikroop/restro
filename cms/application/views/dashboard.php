@@ -41,7 +41,7 @@
 
                         <div class="info-box-content">
                           <span class="info-box-text">Food</span>
-                          <h3 class="info-box-number"><?php echo round(($dashboard['question_1'] / ($dashboard['number_of_customer'] * 5) * 5),2)?></h3>
+                          <h3 class="info-box-number"><?php echo $dashboard['question_1']?></h3>
                         </div>
                         <!-- /.info-box-content -->
                       </div>
@@ -56,7 +56,7 @@
 
                         <div class="info-box-content">
                           <span class="info-box-text">Cleanliness</span>
-                          <h3 class="info-box-number"><?php echo round(($dashboard['question_2'] / ($dashboard['number_of_customer'] * 5) * 5),2)?></h3>
+                          <h3 class="info-box-number"><?php echo $dashboard['question_2']?></h3>
                         </div>
                         <!-- /.info-box-content -->
                       </div>
@@ -71,7 +71,7 @@
 
                         <div class="info-box-content">
                           <span class="info-box-text">Service</span>
-                          <h3 class="info-box-number"><?php echo round(($dashboard['question_3'] / ($dashboard['number_of_customer'] * 5) * 5),2)?></h3>
+                          <h3 class="info-box-number"><?php echo $dashboard['question_3']?></h3>
                         </div>
                         <!-- /.info-box-content -->
                       </div>
@@ -89,7 +89,7 @@
 
                         <div class="info-box-content">
                           <span class="info-box-text">Friendliness </span>
-                          <h3 class="info-box-number"><?php echo round(($dashboard['question_4'] / ($dashboard['number_of_customer'] * 5) * 5),2)?></h3>
+                          <h3 class="info-box-number"><?php echo $dashboard['question_4']?></h3>
                         </div>
                         <!-- /.info-box-content -->
                       </div>
@@ -102,7 +102,7 @@
 
                         <div class="info-box-content">
                           <span class="info-box-text">Apperance</span>
-                          <h3 class="info-box-number"><?php echo round(($dashboard['question_5'] / ($dashboard['number_of_customer'] * 5) * 5),2)?></h3>
+                          <h3 class="info-box-number"><?php echo $dashboard['question_5']?></h3>
                         </div>
                         <!-- /.info-box-content -->
                       </div>
@@ -119,7 +119,7 @@
 
                         <div class="info-box-content">
                           <span class="info-box-text">Money</span>
-                          <h3 class="info-box-number"><?php echo round(($dashboard['question_6'] / ($dashboard['number_of_customer'] * 5) * 5),2)?></h3>
+                          <h3 class="info-box-number"><?php echo $dashboard['question_6']?></h3>
                         </div>
                         <!-- /.info-box-content -->
                       </div>
@@ -132,7 +132,7 @@
 
                         <div class="info-box-content">
                           <span class="info-box-text">Design</span>
-                          <h3 class="info-box-number"><?php echo round(($dashboard['question_7'] / ($dashboard['number_of_customer'] * 5) * 5),2)?></h3>
+                          <h3 class="info-box-number"><?php echo $dashboard['question_7']?></h3>
                         </div>
                         <!-- /.info-box-content -->
                       </div>
@@ -142,35 +142,38 @@
                   </div>
                   <hr>
 
-						<div class="row">
-						<form method="post" action="<?php echo base_url('Admin/dashboard')?>" class="header-elements-inline">
-							<div class="form-group" style="margin-right: 2%">
-								<label>Start Date:</label>
-								<input type="date" class="form-control" placeholder="Eugene Kopyov" name="start_date">
-							</div>
 
-							<div class="form-group" style="margin-right: 2%">
-								<label>End Date:</label>
-								<input type="date" class="form-control" placeholder="Your strong password" name="end_date">
-							</div>
-
-							<div class="d-flex justify-content-start align-items-center">
-								<button type="submit" class="btn bg-blue ml-3">Submit</button>
-							</div>
-						</form>
-						</div>
 					</div>
-					<div class="card-header header-elements-inline">
-						<h5 class="card-title">Quality of food</h5>
-					</div>
+              <?php if($rating) {?>
+              <div class="row">
+              <form method="post" action="<?php echo base_url('Admin/dashboard')?>" class="header-elements-inline">
+                <div class="form-group" style="margin-right: 2%">
+                  <label>Start Date:</label>
+                  <input type="date" class="form-control" placeholder="Eugene Kopyov" name="start_date">
+                </div>
 
-					<div class="card-body">
-						
+                <div class="form-group" style="margin-right: 2%">
+                  <label>End Date:</label>
+                  <input type="date" class="form-control" placeholder="Your strong password" name="end_date">
+                </div>
 
-						<div class="chart-container">
-							<div class="chart" id="google-line-question-1"></div>
-						</div>
-					</div>
+                <div class="d-flex justify-content-start align-items-center">
+                  <button type="submit" class="btn bg-blue ml-3">Submit</button>
+                </div>
+              </form>
+              </div>
+                  
+        					<div class="card-header header-elements-inline">
+        						<h5 class="card-title">Quality of food</h5>
+        					</div>
+
+        					<div class="card-body">
+        						
+
+        						<div class="chart-container">
+        							<div class="chart" id="google-line-question-1"></div>
+        						</div>
+        					</div>
                     <hr>
                     <div class="card-header header-elements-inline">
                         <h5 class="card-title">Cleanliness of Restaurant / Rest Room</h5>
@@ -243,6 +246,7 @@
                             <div class="chart" id="google-line-question-7"></div>
                         </div>
                     </div>
+                  <?php } ?>
 				</div>
 				<!-- /simple line chart -->
 
