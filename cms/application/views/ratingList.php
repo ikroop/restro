@@ -25,13 +25,13 @@
                                 <th>Name</th>
                                 <th>Mobile</th>
                                 <th>Email</th>
-                                <th>Question 1 </th>
-                                <th>Question 2 </th>
-                                <th>Question 3 </th>
-                                <th>Question 4 </th>
-                                <th>Question 5 </th>
-                                <th>Question 6 </th>
-                                <th>Question 7 </th>
+                                <th>Food </th>
+                                <th>Cleanliness </th>
+                                <th>Service </th>
+                                <th>Friendliness </th>
+                                <th>Apperance </th>
+                                <th>Money </th>
+                                <th>Design </th>
                                 <th>Created At</th>
 							</tr>
 						</thead>
