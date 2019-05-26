@@ -44,15 +44,16 @@ class Admin extends CI_Controller {
                 
                 $dashboard = $this->AdminModel->getDashboardCountData();
 
+
                 $data['dashboard']['number_of_customer'] = isset($dashboard_data['number_of_customer']) ? $dashboard_data['number_of_customer'] : 0;
                 $data['dashboard']['number_of_feedback'] = isset($dashboard_data['number_of_feedback']) ? $dashboard_data['number_of_feedback'] : 0;
-                $data['dashboard']['question_1']        = isset($dashboard_data['question_1']) ?  round(($dashboard['question_1'] / ($dashboard['number_of_customer'] * 5) * 5),2)  : 0;
-                $data['dashboard']['question_2'] = isset($dashboard_data['question_2']) ?  round(($dashboard['question_2'] / ($dashboard['number_of_customer'] * 5) * 5),2) : 0;
-                $data['dashboard']['question_3'] = isset($dashboard_data['question_3']) ?  round(($dashboard['question_3'] / ($dashboard['number_of_customer'] * 5) * 5),2) : 0;
-                $data['dashboard']['question_4'] = isset($dashboard_data['question_4']) ?  round(($dashboard['question_4'] / ($dashboard['number_of_customer'] * 5) * 5),2) : 0;
-                $data['dashboard']['question_5'] = isset($dashboard_data['question_5']) ?  round(($dashboard['question_5'] / ($dashboard['number_of_customer'] * 5) * 5),2) : 0;
-                $data['dashboard']['question_6'] = isset($dashboard_data['question_6']) ?  round(($dashboard['question_6'] / ($dashboard['number_of_customer'] * 5) * 5),2) : 0;
-                $data['dashboard']['question_7'] = isset($dashboard_data['question_7']) ?  round(($dashboard['question_7'] / ($dashboard['number_of_customer'] * 5) * 5),2) : 0;
+                $data['dashboard']['question_1']        = isset($dashboard_data['question_1']) ?  round(($dashboard_data['question_1'] / ($dashboard_data['number_of_customer'] * 5) * 5),2)  : 0;
+                $data['dashboard']['question_2'] = isset($dashboard_data['question_2']) ?  round(($dashboard_data['question_2'] / ($dashboard_data['number_of_customer'] * 5) * 5),2) : 0;
+                $data['dashboard']['question_3'] = isset($dashboard_data['question_3']) ?  round(($dashboard_data['question_3'] / ($dashboard_data['number_of_customer'] * 5) * 5),2) : 0;
+                $data['dashboard']['question_4'] = isset($dashboard_data['question_4']) ?  round(($dashboard_data['question_4'] / ($dashboard_data['number_of_customer'] * 5) * 5),2) : 0;
+                $data['dashboard']['question_5'] = isset($dashboard_data['question_5']) ?  round(($dashboard_data['question_5'] / ($dashboard_data['number_of_customer'] * 5) * 5),2) : 0;
+                $data['dashboard']['question_6'] = isset($dashboard_data['question_6']) ?  round(($dashboard_data['question_6'] / ($dashboard_data['number_of_customer'] * 5) * 5),2) : 0;
+                $data['dashboard']['question_7'] = isset($dashboard_data['question_7']) ?  round(($dashboard_data['question_7'] / ($dashboard_data['number_of_customer'] * 5) * 5),2) : 0;
 
                 
                 $first_date = date('Y-m-01');
@@ -172,13 +173,13 @@ class Admin extends CI_Controller {
 
         $data['dashboard']['number_of_customer'] = isset($dashboard_data['number_of_customer']) ? $dashboard_data['number_of_customer'] : 0;
         $data['dashboard']['number_of_feedback'] = isset($dashboard_data['number_of_feedback']) ? $dashboard_data['number_of_feedback'] : 0;
-        $data['dashboard']['question_1']        = isset($dashboard_data['question_1']) ?  round(($dashboard['question_1'] / ($dashboard['number_of_customer'] * 5) * 5),2)  : 0;
-        $data['dashboard']['question_2'] = isset($dashboard_data['question_2']) ?  round(($dashboard['question_2'] / ($dashboard['number_of_customer'] * 5) * 5),2) : 0;
-        $data['dashboard']['question_3'] = isset($dashboard_data['question_3']) ?  round(($dashboard['question_3'] / ($dashboard['number_of_customer'] * 5) * 5),2) : 0;
-        $data['dashboard']['question_4'] = isset($dashboard_data['question_4']) ?  round(($dashboard['question_4'] / ($dashboard['number_of_customer'] * 5) * 5),2) : 0;
-        $data['dashboard']['question_5'] = isset($dashboard_data['question_5']) ?  round(($dashboard['question_5'] / ($dashboard['number_of_customer'] * 5) * 5),2) : 0;
-        $data['dashboard']['question_6'] = isset($dashboard_data['question_6']) ?  round(($dashboard['question_6'] / ($dashboard['number_of_customer'] * 5) * 5),2) : 0;
-        $data['dashboard']['question_7'] = isset($dashboard_data['question_7']) ?  round(($dashboard['question_7'] / ($dashboard['number_of_customer'] * 5) * 5),2) : 0;
+        $data['dashboard']['question_1']        = isset($dashboard_data['question_1']) ?  round(($dashboard_data['question_1'] / ($dashboard_data['number_of_customer'] * 5) * 5),2)  : 0;
+        $data['dashboard']['question_2'] = isset($dashboard_data['question_2']) ?  round(($dashboard_data['question_2'] / ($dashboard_data['number_of_customer'] * 5) * 5),2) : 0;
+        $data['dashboard']['question_3'] = isset($dashboard_data['question_3']) ?  round(($dashboard_data['question_3'] / ($dashboard_data['number_of_customer'] * 5) * 5),2) : 0;
+        $data['dashboard']['question_4'] = isset($dashboard_data['question_4']) ?  round(($dashboard_data['question_4'] / ($dashboard_data['number_of_customer'] * 5) * 5),2) : 0;
+        $data['dashboard']['question_5'] = isset($dashboard_data['question_5']) ?  round(($dashboard_data['question_5'] / ($dashboard_data['number_of_customer'] * 5) * 5),2) : 0;
+        $data['dashboard']['question_6'] = isset($dashboard_data['question_6']) ?  round(($dashboard_data['question_6'] / ($dashboard_data['number_of_customer'] * 5) * 5),2) : 0;
+        $data['dashboard']['question_7'] = isset($dashboard_data['question_7']) ?  round(($dashboard_data['question_7'] / ($dashboard_data['number_of_customer'] * 5) * 5),2) : 0;
 
         if(isset($_POST) && !empty($_POST)){
             $first_date = date('Y-m-d',strtotime($this->input->post('start_date')));

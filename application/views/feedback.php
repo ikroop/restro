@@ -44,13 +44,13 @@
 					 <div class="form-group">
 					    <label for="name" class="fsr-only">1. Quality of food  ?</label>
 					    <div class="row">
-						    <div class="radio radio-inline col-md-3">
+						    <div class="radio radio-inline col-md-4">
 						      <label><input type="radio" name="question_1" value="3">Execellent</label>
 						    </div>
-						    <div class="radio radio-inline col-md-3">
+						    <div class="radio radio-inline col-md-4">
 						      <label><input type="radio" name="question_1" value="2">Good</label>
 						    </div>
-						    <div class="radio radio-inline col-md-3">
+						    <div class="radio radio-inline col-md-4">
 						      <label><input type="radio" name="question_1" value="1">Average</label>
 						    </div>
 						    
@@ -61,13 +61,13 @@
 					 <div class="form-group">
 					    <label for="name" class="fsr-only">2. Cleanliness of Restaurant / Rest Room ?</label>
 					    <div class="row">
-						    <div class="radio radio-inline col-md-3">
+						    <div class="radio radio-inline col-md-4">
 						      <label><input type="radio" name="question_2" value="3">Execellent</label>
 						    </div>
-						    <div class="radio radio-inline col-md-3">
+						    <div class="radio radio-inline col-md-4">
 						      <label><input type="radio" name="question_2" value="2">Good</label>
 						    </div>
-						    <div class="radio radio-inline col-md-3">
+						    <div class="radio radio-inline col-md-4">
 						      <label><input type="radio" name="question_2" value="1">Average</label>
 						    </div>
 						   
@@ -77,13 +77,13 @@
 					 <div class="form-group">
 					    <label for="name" class="fsr-only">3. Quality of Service ?</label>
 					    <div class="row">
-						    <div class="radio radio-inline col-md-3">
+						    <div class="radio radio-inline col-md-4">
 						      <label><input type="radio" name="question_3" value="3">Execellent</label>
 						    </div>
-						    <div class="radio radio-inline col-md-3">
+						    <div class="radio radio-inline col-md-4">
 						      <label><input type="radio" name="question_3" value="2">Good</label>
 						    </div>
-						    <div class="radio radio-inline col-md-3">
+						    <div class="radio radio-inline col-md-4">
 						      <label><input type="radio" name="question_3" value="1">Average</label>
 						    </div>
 						    
@@ -94,13 +94,13 @@
 					 <div class="form-group">
 					    <label for="name" class="fsr-only">4. Friendliness of Staff ?</label>
 					    <div class="row">
-						    <div class="radio radio-inline col-md-3">
+						    <div class="radio radio-inline col-md-4">
 						      <label><input type="radio" name="question_4" value="3">Execellent</label>
 						    </div>
-						    <div class="radio radio-inline col-md-3">
+						    <div class="radio radio-inline col-md-4">
 						      <label><input type="radio" name="question_4" value="2">Good</label>
 						    </div>
-						    <div class="radio radio-inline col-md-3">
+						    <div class="radio radio-inline col-md-4">
 						      <label><input type="radio" name="question_4" value="1">Average</label>
 						    </div>
 						    
@@ -110,13 +110,13 @@
 					 <div class="form-group">
 					    <label for="name" class="fsr-only">5. Appearance of Staff ?</label>
 					    <div class="row">
-						    <div class="radio radio-inline col-md-3">
+						    <div class="radio radio-inline col-md-4">
 						      <label><input type="radio" name="question_5" value="3">Execellent</label>
 						    </div>
-						    <div class="radio radio-inline col-md-3">
+						    <div class="radio radio-inline col-md-4">
 						      <label><input type="radio" name="question_5" value="2">Good</label>
 						    </div>
-						    <div class="radio radio-inline col-md-3">
+						    <div class="radio radio-inline col-md-4">
 						      <label><input type="radio" name="question_5" value="1">Average</label>
 						    </div>
 						    
@@ -127,13 +127,13 @@
 					<div class="form-group">
 					    <label for="name" class="fsr-only">6. Value for Money ?</label>
 					    <div class="row">
-						    <div class="radio radio-inline col-md-3">
+						    <div class="radio radio-inline col-md-4">
 						      <label><input type="radio" name="question_6" value="3">Execellent</label>
 						    </div>
-						    <div class="radio radio-inline col-md-3">
+						    <div class="radio radio-inline col-md-4">
 						      <label><input type="radio" name="question_6" value="2">Good</label>
 						    </div>
-						    <div class="radio radio-inline col-md-3">
+						    <div class="radio radio-inline col-md-4">
 						      <label><input type="radio" name="question_6" value="1">Average</label>
 						    </div>
 						    
@@ -143,13 +143,13 @@
 <div class="form-group">
 					    <label for="name" class="fsr-only">7. Restaurant Interior Design ?</label>
 					    <div class="row">
-						    <div class="radio radio-inline col-md-3">
+						    <div class="radio radio-inline col-md-4">
 						      <label><input type="radio" name="question_7" value="3">Execellent</label>
 						    </div>
-						    <div class="radio radio-inline col-md-3">
+						    <div class="radio radio-inline col-md-4">
 						      <label><input type="radio" name="question_7" value="2">Good</label>
 						    </div>
-						    <div class="radio radio-inline col-md-3">
+						    <div class="radio radio-inline col-md-4">
 						      <label><input type="radio" name="question_7" value="1">Average</label>
 						    </div>
 						    

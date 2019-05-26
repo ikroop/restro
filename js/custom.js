@@ -486,15 +486,13 @@ var dishes = (function() {
 
 
 $('.birthdate').datepicker({
-    language: 'en',
-    minDate: new Date(), // Now can select only dates, which goes after today
+    language: 'en', // Now can select only dates, which goes after today
     position: 'bottom left',
     autoclose : true
 });
 
 $('.anniversary_date').datepicker({
-    language: 'en',
-    minDate: new Date(), // Now can select only dates, which goes after today
+    language: 'en', // Now can select only dates, which goes after today
     position: 'bottom left',
     autoclose : true
 });
