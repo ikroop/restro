@@ -61,7 +61,7 @@ class Admin extends CI_Controller {
                 $rating_data = $this->AdminModel->getDashboardData($first_date,$last_date);
 
 
-                $rating = array();
+                $daily_rating = array();
                 $i = 0;
                 $count = 0;
                 foreach($rating_data as $row){
