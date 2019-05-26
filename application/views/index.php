@@ -18,6 +18,7 @@
     <script src="<?php echo base_url()?>bootstrap/js/bootstrap.min.js"></script>
     <script src="<?php echo base_url()?>js/datepicker.min.js"></script>
     <!-- hello -->
+    <!-- jay -->
 
   </head>
   <body data-spy="scroll" data-target=".navbar" data-offset="70">
