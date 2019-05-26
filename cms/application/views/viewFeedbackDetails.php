@@ -27,21 +27,21 @@
 											<div class="form-check col-md-4">
 												<label class="form-check-label">
 													<input type="radio" name="question_1" class="form-check-input-styled-success" <?php if($feedback['question_1'] == 3){ echo 'checked';}?> data-fouc>
-													Success checkbox
+													Execellent
 												</label>
 											</div>
 
 											<div class="form-check col-md-4">
 												<label class="form-check-label">
 													<input type="radio" name="question_1" class="form-check-input-styled-primary" <?php if($feedback['question_1'] == 2){ echo 'checked';}?> data-fouc>
-													Primary checkbox
+													Good
 												</label>
 											</div>
 
 											<div class="form-check col-md-4">
 												<label class="form-check-label">
 													<input type="radio" name="question_1" class="form-check-input-styled-danger" <?php if($feedback['question_1'] == 1){ echo 'checked';}?> data-fouc>
-													Danger checkbox
+													Average
 												</label>
 											</div>
 
@@ -60,21 +60,21 @@
 											<div class="form-check col-md-4">
 												<label class="form-check-label">
 													<input type="radio" name="question_2" class="form-check-input-styled-success" <?php if($feedback['question_2'] == 3){ echo 'checked';}?> data-fouc>
-													Success checkbox
+													Execellent
 												</label>
 											</div>
 
 											<div class="form-check col-md-4">
 												<label class="form-check-label">
 													<input type="radio" name="question_2" class="form-check-input-styled-primary" <?php if($feedback['question_2'] == 2){ echo 'checked';}?> data-fouc>
-													Primary checkbox
+													Good
 												</label>
 											</div>
 
 											<div class="form-check col-md-4">
 												<label class="form-check-label">
 													<input type="radio" name="question_2" class="form-check-input-styled-danger" <?php if($feedback['question_2'] == 4){ echo 'checked';}?> data-fouc>
-													Danger checkbox
+													Average
 												</label>
 											</div>
 
@@ -94,21 +94,21 @@
 											<div class="form-check col-md-4">
 												<label class="form-check-label">
 													<input type="radio" name="question_3" class="form-check-input-styled-success" <?php if($feedback['question_3'] == 3){ echo 'checked';}?> data-fouc>
-													Success checkbox
+													Execellent
 												</label>
 											</div>
 
 											<div class="form-check col-md-4">
 												<label class="form-check-label">
 													<input type="radio" name="question_3" class="form-check-input-styled-primary" <?php if($feedback['question_3'] == 2){ echo 'checked';}?> data-fouc>
-													Primary checkbox
+													Good
 												</label>
 											</div>
 
 											<div class="form-check col-md-4">
 												<label class="form-check-label">
 													<input type="radio" name="question_3" class="form-check-input-styled-danger" <?php if($feedback['question_3'] == 4){ echo 'checked';}?> data-fouc>
-													Danger checkbox
+													Average
 												</label>
 											</div>
 	
@@ -126,21 +126,21 @@
 											<div class="form-check col-md-4">
 												<label class="form-check-label">
 													<input type="radio" name="question_4" class="form-check-input-styled-success" <?php if($feedback['question_4'] == 3){ echo 'checked';}?> data-fouc>
-													Success checkbox
+													Execellent
 												</label>
 											</div>
 
 											<div class="form-check col-md-4">
 												<label class="form-check-label">
 													<input type="radio" name="question_4" class="form-check-input-styled-primary" <?php if($feedback['question_4'] == 2){ echo 'checked';}?> data-fouc>
-													Primary checkbox
+													Good
 												</label>
 											</div>
 
 											<div class="form-check col-md-4">
 												<label class="form-check-label">
 													<input type="radio" name="question_4" class="form-check-input-styled-danger" <?php if($feedback['question_4'] == 4){ echo 'checked';}?> data-fouc>
-													Danger checkbox
+													Average
 												</label>
 											</div>
 										
@@ -158,21 +158,21 @@
 											<div class="form-check col-md-4">
 												<label class="form-check-label">
 													<input type="radio" name="question_5" class="form-check-input-styled-success" <?php if($feedback['question_5'] == 3){ echo 'checked';}?> data-fouc>
-													Success checkbox
+													Execellent
 												</label>
 											</div>
 
 											<div class="form-check col-md-4">
 												<label class="form-check-label">
 													<input type="radio" name="question_5" class="form-check-input-styled-primary" <?php if($feedback['question_5'] == 2){ echo 'checked';}?> data-fouc>
-													Primary checkbox
+													Good
 												</label>
 											</div>
 
 											<div class="form-check col-md-4">
 												<label class="form-check-label">
 													<input type="radio" name="question_5" class="form-check-input-styled-danger" <?php if($feedback['question_5'] == 1){ echo 'checked';}?> data-fouc>
-													Danger checkbox
+													Average
 												</label>
 											</div>
 
@@ -191,21 +191,21 @@
 											<div class="form-check col-md-4">
 												<label class="form-check-label">
 													<input type="radio" name="question_6" class="form-check-input-styled-success" <?php if($feedback['question_6'] == 3){ echo 'checked';}?> data-fouc>
-													Success checkbox
+													Execellent
 												</label>
 											</div>
 
 											<div class="form-check col-md-4">
 												<label class="form-check-label">
 													<input type="radio" name="question_6" class="form-check-input-styled-primary" <?php if($feedback['question_6'] == 2){ echo 'checked';}?> data-fouc>
-													Primary checkbox
+													Good
 												</label>
 											</div>
 
 											<div class="form-check col-md-4">
 												<label class="form-check-label">
 													<input type="radio" name="question_6" class="form-check-input-styled-danger" <?php if($feedback['question_6'] == 1){ echo 'checked';}?> data-fouc>
-													Danger checkbox
+													Average
 												</label>
 											</div>
 
@@ -224,21 +224,21 @@
 											<div class="form-check col-md-4">
 												<label class="form-check-label">
 													<input type="radio" name="question_7" class="form-check-input-styled-success" <?php if($feedback['question_7'] == 3){ echo 'checked';}?> data-fouc>
-													Success checkbox
+													Execellent
 												</label>
 											</div>
 
 											<div class="form-check col-md-4">
 												<label class="form-check-label">
 													<input type="radio" name="question_7" class="form-check-input-styled-primary" <?php if($feedback['question_7'] == 2){ echo 'checked';}?> data-fouc>
-													Primary checkbox
+													Good
 												</label>
 											</div>
 
 											<div class="form-check col-md-4">
 												<label class="form-check-label">
 													<input type="radio" name="question_7" class="form-check-input-styled-danger" <?php if($feedback['question_7'] == 1){ echo 'checked';}?> data-fouc>
-													Danger checkbox
+													Average
 												</label>
 											</div>
 

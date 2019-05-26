@@ -148,7 +148,7 @@
 						</div>
 					</div>
 					<div class="card-header header-elements-inline">
-						<h5 class="card-title">Question 1</h5>
+						<h5 class="card-title">Quality of food</h5>
 					</div>
 
 					<div class="card-body">
@@ -160,7 +160,7 @@
 					</div>
                     <hr>
                     <div class="card-header header-elements-inline">
-                        <h5 class="card-title">Question 2</h5>
+                        <h5 class="card-title">Cleanliness of Restaurant / Rest Room</h5>
                     </div>
 
                     <div class="card-body">
@@ -172,7 +172,7 @@
                     </div>
                     <hr>
                     <div class="card-header header-elements-inline">
-                        <h5 class="card-title">Question 3</h5>
+                        <h5 class="card-title">Quality of Service</h5>
                     </div>
 
                     <div class="card-body">
@@ -184,7 +184,7 @@
                     </div>
                     <hr>
                     <div class="card-header header-elements-inline">
-                        <h5 class="card-title">Question 4</h5>
+                        <h5 class="card-title">Friendliness of Staff</h5>
                     </div>
 
                     <div class="card-body">
@@ -196,7 +196,7 @@
                     </div>
                     <hr>
                     <div class="card-header header-elements-inline">
-                        <h5 class="card-title">Question 5</h5>
+                        <h5 class="card-title">Appearance of Staff</h5>
                     </div>
 
                     <div class="card-body">
@@ -208,7 +208,7 @@
                     </div>
                     <hr>
                     <div class="card-header header-elements-inline">
-                        <h5 class="card-title">Question 6</h5>
+                        <h5 class="card-title">Value for Money</h5>
                     </div>
 
                     <div class="card-body">
@@ -220,7 +220,7 @@
                     </div>
                     <hr>
                     <div class="card-header header-elements-inline">
-                        <h5 class="card-title">Question 7</h5>
+                        <h5 class="card-title">Restaurant Interior Design</h5>
                     </div>
 
                     <div class="card-body">
@@ -301,7 +301,7 @@ var GoogleLineBasic = function() {
 
             // Data
             var data_1 = google.visualization.arrayToDataTable([
-                ['Date', 'question_1'],
+                ['Date', 'Quality of food'],
 
                 <?php 
                 $i = 0;
@@ -314,7 +314,7 @@ var GoogleLineBasic = function() {
             ]);
 
             var data_2 = google.visualization.arrayToDataTable([
-                ['Date', 'question_2'],
+                ['Date', 'Cleanliness of Restaurant / Rest Room'],
 
                 <?php 
                 $i = 0;
@@ -327,7 +327,7 @@ var GoogleLineBasic = function() {
             ]);
 
             var data_3 = google.visualization.arrayToDataTable([
-                ['Date', 'question_3'],
+                ['Date', 'Quality of Service'],
 
                 <?php 
                 $i = 0;
@@ -340,7 +340,7 @@ var GoogleLineBasic = function() {
             ]);
 
             var data_4 = google.visualization.arrayToDataTable([
-                ['Date', 'question_4'],
+                ['Date', 'Friendliness of Staff'],
 
                 <?php 
                 $i = 0;
@@ -353,7 +353,7 @@ var GoogleLineBasic = function() {
             ]);
 
             var data_5 = google.visualization.arrayToDataTable([
-                ['Date', 'question_5'],
+                ['Date', 'Appearance of Staff'],
 
                 <?php 
                 $i = 0;
@@ -366,7 +366,7 @@ var GoogleLineBasic = function() {
             ]);
 
             var data_6 = google.visualization.arrayToDataTable([
-                ['Date', 'question_6'],
+                ['Date', 'Value for Money'],
 
                 <?php 
                 $i = 0;
@@ -379,7 +379,7 @@ var GoogleLineBasic = function() {
             ]);
 
             var data_7 = google.visualization.arrayToDataTable([
-                ['Date', 'question_7'],
+                ['Date', 'Restaurant Interior Design'],
 
                 <?php 
                 $i = 0;
