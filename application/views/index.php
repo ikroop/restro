@@ -79,14 +79,14 @@
 				  <!-- Email -->
 				  <div class="form-group">
 				    <label for="date" class="sr-only">Birth Date</label>
-				    <input class="form-control" id="birthdate" data-toggle="birthdate" value="<?php echo set_value('birthdate')?>">
+				    <input class="form-control" id="birthdate" data-toggle="birthdate" value="<?php echo set_value('birthdate')?>" name="birthdate">
 				    <span class="help-block"><?php echo form_error('birthdate');?></span>
 				  </div>
 
 				  <!-- Email -->
 				  <div class="form-group">
 				    <label for="anniversary_date" class="sr-only">Anniversary Date</label>
-				    <input class="form-control" id="anniversary_date" data-toggle="anniversary_date" value="<?php echo set_value('anniversary_date')?>" value="<?php echo set_value('anniversary_date')?>">
+				    <input class="form-control" id="anniversary_date" data-toggle="anniversary_date" value="<?php echo set_value('anniversary_date')?>" value="<?php echo set_value('anniversary_date')?>" name="anniversary_date">
 				    <span class="help-block"><?php echo form_error('anniversary_date');?></span>
 				  </div>
 
