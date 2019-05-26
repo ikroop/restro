@@ -17,7 +17,7 @@
     <script src="<?php echo base_url()?>plugins/jquery/jquery-1.12.4.min.js"></script>
     <script src="<?php echo base_url()?>bootstrap/js/bootstrap.min.js"></script>
     <script src="<?php echo base_url()?>js/datepicker.min.js"></script>
-
+    <!-- hello -->
 
   </head>
   <body data-spy="scroll" data-target=".navbar" data-offset="70">
