@@ -21,6 +21,7 @@
                                 <th>Birthdate</th>
                                 <th>Anniversary Date</th>
                                 <th>Created At</th>
+                                <th>Feedback Count</th>
                                 <th>Action</th>
 							</tr>
 						</thead>
@@ -47,6 +48,97 @@
 
 <!-- Mirrored from demo.interface.club/limitless/demo/bs4/Template/layout_1/LTR/default/full/datatable_styling.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 17 May 2019 07:07:30 GMT -->
 </html>
+ <!-- Vertical form modal -->
+<div id="modal_form_vertical" class="modal fade" tabindex="-1">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Feedback</h5>
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+			</div>
+
+			<form action="#">
+				<div class="modal-body">
+					<table class="table table-bordered">
+						<thead>
+							<tr>
+								<th>Date</th>
+							</tr>
+						</thead>
+						<tbody class="feedback_body">
+							
+						</tbody>
+					</table>
+				</div>
+
+				<div class="modal-footer">
+					<button type="button" class="btn bg-primary" data-dismiss="modal">Close</button>
+					
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<!-- /vertical form modal -->
+
+ <!-- Edit modal -->
+<div id="edit_modal" class="modal fade" tabindex="-1">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title text-center">Customer</h5>
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+			</div>
+
+			<form action="#" id="updateCustomer">
+				<div class="modal-body">
+					<input type="hidden" name="id" id="id">
+					<div class="form-group">
+						<div class="row">
+							<div class="col-sm-6">
+								<label>Name</label>
+								<input type="text" placeholder="name" class="form-control" id="name" name="name">
+							</div>
+
+							<div class="col-sm-6">
+								<label>Mobile</label>
+								<input type="number" placeholder="mobile" class="form-control" id="mobile" name="mobile">
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-sm-6">
+								<label>Email</label>
+								<input type="text" placeholder="Email" class="form-control" id="email" name="email">
+							</div>
+
+							<div class="col-sm-6">
+								<label>Birthdate</label>
+								<input type="date" placeholder="birthdate" class="form-control" id="birthdate" name="birthdate">
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-sm-6">
+								<label>Anniversary Date</label>
+								<input type="date" placeholder="Anniversary Date" class="form-control" id="anniversary_date" name="anniversary_date">
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="modal-footer">
+					<button type="submit" class="btn bg-primary">Submit</button>
+					
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<!-- /Edit modal -->
+
 <script>
 $(document).ready(function() {
     	$('#customerList thead th').each(function () {
@@ -130,6 +222,78 @@ $(document).ready(function() {
 			});
 			
 		});
+
+		$(document).on('click','.getDates',function(){
+			var base_url = $('#base_url').val();
+			var id       = $(this).attr('id');
+			$.ajax({
+				type:'post',
+				data:{id:id},
+				url: base_url+'Admin/getCustomerFeedbackDates',
+				success:function(data){
+					var obj = $.parseJSON(data);
+					if(obj.errCode == -1){
+						$('.feedback_body').empty();
+						$('.feedback_body').append(obj.data);
+					}else if(obj.errCode == 2){
+						alert(obj.data);
+					}else{
+						alert(obj.messages);
+					}
+				}
+
+			});
+		});
+
+		$(document).on('click','.editCustomer',function(){
+			var base_url = $('#base_url').val();
+			var id       = $(this).attr('id');
+			$.ajax({
+				type:'post',
+				data:{id:id},
+				url: base_url+'Admin/editCustomer',
+				success:function(data){
+					var obj = $.parseJSON(data);
+					if(obj.errCode == -1){
+						$('#id').val(obj.data.id);
+						$('#name').val(obj.data.name);
+						$('#mobile').val(obj.data.mobile);
+						$('#email').val(obj.data.email);
+						$('#birthdate').val(obj.data.birthdate);
+						$('#anniversary_date').val(obj.data.anniversary_date);
+					}else{
+						alert('Error occur');
+					}
+					
+				}
+
+			});
+		});
+
+		$('#updateCustomer').submit(function(e){
+			e.preventDefault();
+			var formData = new FormData($(this)[0]);
+			var base_url = $('#base_url').val();
+			$.ajax({
+				type:'post',
+				data:formData,
+				url: base_url+'Admin/updateCustomer',
+				success:function(data){
+				
+					if(data.errCode == -1){
+						alert('Update successfully');
+						Window.location.reload();
+					}else{
+						alert('Error occur');
+					}
+					
+				}
+
+			});
+
+		});
+
+
 
 </script>
 

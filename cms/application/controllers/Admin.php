@@ -42,7 +42,7 @@ class Admin extends CI_Controller {
                 $this->session->set_userdata($logdata);
                 // $data['dashboard'] = $this->AdminModel->getDashboardData();
                 
-                $dashboard = $this->AdminModel->getDashboardCountData();
+                $dashboard_data = $this->AdminModel->getDashboardCountData();
 
 
                 $data['dashboard']['number_of_customer'] = isset($dashboard_data['number_of_customer']) ? $dashboard_data['number_of_customer'] : 0;
@@ -106,6 +106,7 @@ class Admin extends CI_Controller {
         $this->load->view('base_template_admin', $data);   
     }
     public function getCustomerListDetails(){
+
          $data = $row = array();
         
         // Fetch member's records
@@ -127,11 +128,13 @@ class Admin extends CI_Controller {
                                             </a>
 
                                             <div class="dropdown-menu dropdown-menu-right">
-                                                <a href="'.base_url().'Admin/viewFeedbackDetails/'.$member->id.'" class="dropdown-item"><i class="icon-file-pdf"></i>View Feedback</a>
+                                                <a href="#" data-toggle="modal" data-target="#edit_modal" class="dropdown-item editCustomer" id="'.$member->id.'"><i class="icon-file-pencil"></i>Edit</a>
                                             
                                             </div>
                                         </div>
                                     </div>';
+
+            $feedback = '<a href="#" data-toggle="modal" data-target="#modal_form_vertical" id='.$member->id.' class="getDates">'.$member->feedback_count.'</a>';
             $data[] = array($i,
                             $member->name, 
                             $member->mobile,
@@ -139,6 +142,7 @@ class Admin extends CI_Controller {
                             $birthdate,
                             $anniversary_date,
                             $member->created_at,
+                            $feedback,
                             $action
                         );
         }
@@ -229,7 +233,6 @@ class Admin extends CI_Controller {
 
             $i++;
 
-
             $data[] = array($i,
                             $member->name, 
                             $member->mobile,
@@ -259,4 +262,84 @@ class Admin extends CI_Controller {
 
     }
     
+    public function getCustomerFeedbackDates(){
+        $this->form_validation->set_rules('id','Id','required|trim|xss_clean');
+        if($this->form_validation->run()){
+            $id = $this->input->post('id');
+
+            $filter = array('c.id'=>$id);
+            $result = $this->AdminModel->getCustomerFeedbackDates($filter);
+            if($result){
+                
+                foreach($result as $row){
+                    $data = '<tr><td><a href="'.base_url().'Admin/viewFeedbackDetails/'.$row['id'].'" target="_blank">'.$row['created_at'].'</a></td></tr>';
+                }
+
+                $returnArr['errCode'] = -1;
+                $returnArr['data']    = $data;
+            }else{
+                $returnArr['errCode'] = 2;
+                $returnArr['data']    = 'No data Available';
+            }
+        }else{
+            $returnArr['errCode'] = 3;
+            foreach($this->input->post() as $key => $value){
+                    $returnArr['messages'][$key] = form_error($key);
+                }
+            }
+        echo json_encode($returnArr);
+    }
+
+    public function editCustomer(){
+        $this->form_validation->set_rules('id','Id','required|trim|xss_clean');
+        if($this->form_validation->run()){
+            $id = $this->input->post('id');
+
+            $filter = array('id'=>$id);
+            $result = $this->AdminModel->getCustomerDetails($filter);
+            if($result){
+                $returnArr['errCode'] = -1;
+                $returnArr['data']    = $result;
+            }else{
+                $returnArr['errCode'] = 2;
+                $returnArr['data']    = 'No data Available';
+            }
+        }else{
+            $returnArr['errCode'] = 3;
+            foreach($this->input->post() as $key => $value){
+                    $returnArr['messages'][$key] = form_error($key);
+                }
+            }
+        echo json_encode($returnArr);   
+    }
+    public function updateCustomer(){
+        echo "<pre>";
+        print_r($_POST);exit;
+        $this->form_validation->set_rules('id','id','required|trim|xss_clean');
+        $this->form_validation->set_rules('name','Name','required|trim|xss_clean');
+        $this->form_validation->set_rules('mobile','Mobile','required|trim|xss_clean');
+        $this->form_validation->set_rules('email','Email','trim|xss_clean|email');
+        if($this->form_validation->run()){
+            $input_data = $this->input->post();
+
+            $filter = array('id'=>$input_data['id']);
+            $result = $this->AdminModel->updateCustomer($filter);
+            if($result){
+                $returnArr['errCode'] = -1;
+                $returnArr['data']    = $data;
+            }else{
+                $returnArr['errCode'] = 2;
+                $returnArr['data']    = 'No data Available';
+            }
+        }else{
+            echo "<pre>";
+            print_r(validation_errors());exit;
+            $returnArr['errCode'] = 3;
+            foreach($this->input->post() as $key => $value){
+                    $returnArr['messages'][$key] = form_error($key);
+                }
+            }
+        echo json_encode($returnArr);   
+    }
+
 }

@@ -21,38 +21,6 @@ class AdminModel extends CI_Model {
         $this->db->where($filter);
         return $this->db->get('user')->row_array();
     }
-
-    
-    public function addProject($data) {
-        $id = $this->input->post('id');
-        if ($id == "new") {
-            $this->db->insert('project', $data);
-        } else {
-            $this->db->where('id', $id);
-            $this->db->update('project', $data);
-        }
-        redirect('admin/projectListView');
-    }
-
-    function getProjectDetails($filter = NULL, $order_by = NULL, $limit = NULL, $start = NULL) {
-        if ($filter) {
-            $this->db->where($filter);
-        }
-        if ($limit || $start) {
-            $this->db->limit($limit, $start);
-        }
-        if ($order_by) {
-            $this->db->order_by($order_by);
-        }
-        $sql = $this->db->get('project');
-        return $sql->result_array();
-    }
-
-    function deleteProject($id) {
-        $this->db->where('id', $id);
-        $this->db->delete('project');
-        redirect('admin/projectListView');
-    }
     
      function getEnquiry($filter = NULL, $order_by = NULL, $limit = NULL, $start = NULL) {
         if ($filter) {
@@ -69,6 +37,10 @@ class AdminModel extends CI_Model {
     }
     public function getCustomerList(){
         return $this->db->get('customer')->result_array();
+    }
+    public function updateCustomer($filter,$data){
+        $this->db->where($filter);
+        return $this->db->update('customer',$data);
     }
 
     public function getFeedbackDetails($filter){
@@ -201,7 +173,7 @@ class AdminModel extends CI_Model {
             $this->db->limit($postData['length'], $postData['start']);
         }
         $query = $this->db->get();
-        
+        //echo $this->db->last_query();exit;
         return $query->result();
     }
     public function countAllCustomerDetails(){
@@ -215,33 +187,35 @@ class AdminModel extends CI_Model {
     }
     private function _get_customer_details_datatables_query($postData){
 
-        $this->db->select('id,name,mobile,email,birthdate,anniversary_date,created_at');
-        $this->db->from('customer');
+        $this->db->select('c.id,name,mobile,email,birthdate,anniversary_date,c.created_at,COUNT(customer_id) as feedback_count');
+        $this->db->join('rating r','r.customer_id = c.id','right outer');
+        $this->db->group_by('c.mobile');
+        $this->db->from('customer c');
         // Set orderable column fields
-        $this->column_order = array(null,'name','mobile','email','birthdate','anniversary_date','created_at');
+        $this->column_order = array(null,'name','mobile','email','birthdate','anniversary_date','c.created_at');
 
         // Set searchable column fields
-        $this->column_search = array('name','mobile','email','birthdate','anniversary_date','created_at');
+        $this->column_search = array('name','mobile','email','birthdate','anniversary_date','c.created_at');
         // Set default order
-        $this->order = array('id' => 'desc');
+        $this->order = array('c.id' => 'desc');
 
        
         
         foreach ($_POST['columns'] as $key => $value) {
                 if(!empty($value['search']['value'])){
-                    if($value['name'] == 'created_at'){
+                    if($value['name'] == 'c.created_at'){
                         $created_at_date = $value['search']['value'];
                         $dates            = explode('-',$created_at_date);
                         $start_date       = date('Y-m-d',strtotime($dates['0']));
                         $end_date         = date('Y-m-d',strtotime($dates['1']));
-                        $this->db->where('DATe(created_at) >=', $start_date);
-                        $this->db->where('DATE(created_at) <=', $end_date);
+                        $this->db->where('DATe(c.created_at) >=', $start_date);
+                        $this->db->where('DATE(c.created_at) <=', $end_date);
 
                         if(isset($_POST['order'])){
                             if($_POST['order'][0]['dir'] == 'desc'){
-                                $this->db->order_by('created_at desc');
+                                $this->db->order_by('c.created_at desc');
                             }else{
-                                $this->db->order_by('created_at asc');
+                                $this->db->order_by('c.created_at asc');
                             }
                         }
                         
@@ -284,6 +258,17 @@ class AdminModel extends CI_Model {
             $order = $this->order;
             $this->db->order_by(key($order), $order[key($order)]);
         }
+    }
+
+    public function getCustomerFeedbackDates($filter){
+        $this->db->select('c.id,r.created_at');
+        $this->db->where($filter);
+        $this->db->join('rating r','r.customer_id = c.id');
+        return $this->db->get('customer c')->result_array();
+    }
+    public function getCustomerDetails($filter){
+        $this->db->where($filter);
+        return $this->db->get('customer')->row_array();
     }
 
 }
