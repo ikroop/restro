@@ -144,7 +144,7 @@ $(document).ready(function() {
     	$('#customerList thead th').each(function () {
 					    	var i = 0;
 			                var title = $(this).text();
-			                if(title == 'Sr No.' || title == 'Action'){
+			                if(title == 'Sr. No.' || title == 'Action'){
 
 			                }else if(title == 'Created At'){
 			                	$(this).html(title+'<input type="text" class="col-search-input" id="created_at"/>');
@@ -192,6 +192,7 @@ $(document).ready(function() {
 									    { "name": "birthdate",    "targets": 4 },
 									    { "name": "anniversary_date",    "targets": 5 },
 									    { "name": "created_at",    "targets": 6 },
+									    { "name": "feedback_count",    "targets": 7 },
 
 									   ]
 				    	});
@@ -272,17 +273,19 @@ $(document).ready(function() {
 
 		$('#updateCustomer').submit(function(e){
 			e.preventDefault();
-			var formData = new FormData($(this)[0]);
+			var form_data = new FormData($(this)[0]);
 			var base_url = $('#base_url').val();
 			$.ajax({
 				type:'post',
-				data:formData,
+				data:form_data,
+				processData: false,
+				contentType: false,
 				url: base_url+'Admin/updateCustomer',
 				success:function(data){
-				
-					if(data.errCode == -1){
+					var obj = $.parseJSON(data);
+					if(obj.errCode == -1){
 						alert('Update successfully');
-						Window.location.reload();
+						location.reload();
 					}else{
 						alert('Error occur');
 					}

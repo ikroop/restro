@@ -3,16 +3,7 @@
 	  
 	<!-- Mirrored from ygamin.bitbucket.io/groggery/1.1.0/index_default.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 12 May 2019 05:27:35 GMT -->
 	<head>
-	    <meta charset="utf-8">
-	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	    <meta name="viewport" content="width=device-width, initial-scale=1">
-	    <link rel="shortcut icon" href="assets/favicon/favicon_Groggery.ico">
-
-	    <title>TDS | Bar & Restro Lounge Template</title>
-
-
-	    <!-- CSS Global -->
-	    <link href="<?php echo base_url()?>css/styles.css" rel="stylesheet">
+	  <?php require_once('head.php');?>
 
 	  </head>
 	  <body data-spy="scroll" data-target=".navbar" data-offset="70">
@@ -180,11 +171,6 @@
 	        </div> <!-- .row -->
 	      </div> <!-- .container -->
 	    </section>
-
-	    <script src="<?php echo base_url()?>plugins/jquery/jquery-1.12.4.min.js"></script>
-	    <script src="<?php echo base_url()?>bootstrap/js/bootstrap.min.js"></script>
-	   
-	    
 
 	    <script src="<?php echo base_url()?>js/custom.js"></script>
 

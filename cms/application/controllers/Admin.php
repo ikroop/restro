@@ -112,14 +112,14 @@ class Admin extends CI_Controller {
         // Fetch member's records
         $memData = $this->AdminModel->getCustomerDetailsRows($_POST);
         
-    
+   
         $i = $_POST['start'];
         foreach($memData as $member){
 
             $i++;
 
-            $birthdate = isset($member->birthdate) == '0000-00-00' ? $member->birthdate : date('d-m-Y',strtotime($member->birthdate));
-            $anniversary_date = isset($member->anniversary_date) == '0000-00-00' ? $member->anniversary_date : date('d-m-Y',strtotime($member->anniversary_date));
+            $birthdate = $member->birthdate == '1970-01-01' ? '0000:00:00' : date('d-m-Y',strtotime($member->birthdate));
+            $anniversary_date = $member->anniversary_date == '1970-01-01' ? '0000:00:00' : date('d-m-Y',strtotime($member->anniversary_date));
 
             $action = '<div class="list-icons">
                                         <div class="dropdown">
@@ -135,6 +135,7 @@ class Admin extends CI_Controller {
                                     </div>';
 
             $feedback = '<a href="#" data-toggle="modal" data-target="#modal_form_vertical" id='.$member->id.' class="getDates">'.$member->feedback_count.'</a>';
+
             $data[] = array($i,
                             $member->name, 
                             $member->mobile,
@@ -161,7 +162,7 @@ class Admin extends CI_Controller {
     }
     public function viewFeedbackDetails(){
         $id = $this->uri->segment(3);
-        $filter = array('c.id'=>$id);
+        $filter = array('r.id'=>$id);
         $data['feedback']   = $this->AdminModel->getFeedbackDetails($filter);
         $data['main_view'] = 'viewFeedbackDetails';
         $this->load->view('base_template_admin',$data);
@@ -221,7 +222,8 @@ class Admin extends CI_Controller {
         $this->load->view('base_template_admin',$data);
     }
     public function getRatingDetails(){
-
+        // echo "<pre>";
+        // print_r($_POST);exit;
         $data = $row = array();
         
         // Fetch member's records
@@ -270,9 +272,9 @@ class Admin extends CI_Controller {
             $filter = array('c.id'=>$id);
             $result = $this->AdminModel->getCustomerFeedbackDates($filter);
             if($result){
-                
+                $data = '';
                 foreach($result as $row){
-                    $data = '<tr><td><a href="'.base_url().'Admin/viewFeedbackDetails/'.$row['id'].'" target="_blank">'.$row['created_at'].'</a></td></tr>';
+                    $data .= '<tr><td><a href="'.base_url().'Admin/viewFeedbackDetails/'.$row['id'].'" target="_blank">'.$row['created_at'].'</a></td></tr>';
                 }
 
                 $returnArr['errCode'] = -1;
@@ -312,18 +314,22 @@ class Admin extends CI_Controller {
             }
         echo json_encode($returnArr);   
     }
-    public function updateCustomer(){
-        echo "<pre>";
-        print_r($_POST);exit;
+    public function updateCustomer(){ 
         $this->form_validation->set_rules('id','id','required|trim|xss_clean');
         $this->form_validation->set_rules('name','Name','required|trim|xss_clean');
         $this->form_validation->set_rules('mobile','Mobile','required|trim|xss_clean');
-        $this->form_validation->set_rules('email','Email','trim|xss_clean|email');
+        $this->form_validation->set_rules('email','Email','trim|xss_clean|valid_email');
         if($this->form_validation->run()){
             $input_data = $this->input->post();
 
             $filter = array('id'=>$input_data['id']);
-            $result = $this->AdminModel->updateCustomer($filter);
+            $data = array('name'      => $input_data['name'],
+                                'mobile'    => $input_data['mobile'],
+                                'email'     => $input_data['email'],
+                                'birthdate' => $input_data['birthdate'],
+                                'anniversary_date' => $input_data['anniversary_date']
+                            );
+            $result = $this->AdminModel->updateCustomer($filter,$data);
             if($result){
                 $returnArr['errCode'] = -1;
                 $returnArr['data']    = $data;
@@ -332,8 +338,6 @@ class Admin extends CI_Controller {
                 $returnArr['data']    = 'No data Available';
             }
         }else{
-            echo "<pre>";
-            print_r(validation_errors());exit;
             $returnArr['errCode'] = 3;
             foreach($this->input->post() as $key => $value){
                     $returnArr['messages'][$key] = form_error($key);

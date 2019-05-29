@@ -3,23 +3,7 @@
   
 <!-- Mirrored from ygamin.bitbucket.io/groggery/1.1.0/index_default.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 12 May 2019 05:27:35 GMT -->
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="assets/favicon/favicon_Groggery.ico">
-
-    <title>TDS | Bar & Restaurant Template</title>
-
-
-    <!-- CSS Global -->
-    <link href="<?php echo base_url()?>css/styles.css" rel="stylesheet">
-    <link href="<?php echo base_url()?>css/datepicker.min.css" rel="stylesheet">
-    <script src="<?php echo base_url()?>plugins/jquery/jquery-1.12.4.min.js"></script>
-    <script src="<?php echo base_url()?>bootstrap/js/bootstrap.min.js"></script>
-    <script src="<?php echo base_url()?>js/datepicker.min.js"></script>
-    <script src="<?php echo base_url()?>js/datepicker.en.js"></script>
-    <!-- hello -->
-    <!-- jay -->
+	<?php require_once('head.php');?>
 
   </head>
   <body data-spy="scroll" data-target=".navbar" data-offset="70">
@@ -118,13 +102,3 @@
   </body>
 
 </html>
-<script type="text/javascript">
-	$('[data-toggle="birthdate"]').datepicker({
-	    'format': 'dd-mm-yyyy',
-	    'setDate' : <?php echo empty(set_value('birthdate')) ?  '01-01-1994' : set_value('birthdate');?>,
-	});
-
-	$('[data-toggle="anniversary_date"]').datepicker({
-	    format: 'dd-mm-yyyy'
-	});
-</script>

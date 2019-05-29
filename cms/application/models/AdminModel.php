@@ -45,8 +45,8 @@ class AdminModel extends CI_Model {
 
     public function getFeedbackDetails($filter){
         $this->db->where($filter);
-        $this->db->join('customer c','c.id = rating.customer_id','right outer');
-        return $this->db->get('rating')->row_array();
+        $this->db->join('customer c','c.id = r.customer_id','right outer');
+        return $this->db->get('rating r')->row_array();
     }
     public function getFeedbackData(){
         $this->db->join('customer c','c.id = rating.customer_id','right outer');
@@ -97,15 +97,14 @@ class AdminModel extends CI_Model {
         $this->db->from('customer c');
         $this->db->join('rating r','c.id = r.customer_id');
         // Set orderable column fields
-        $this->column_order = array(null,'name','mobile','email','question_1','question_2','question_3','question_4','question_5,question_6','question_7');
+        $this->column_order = array(null,'name','mobile','email','question_1','question_2','question_3','question_4','question_5','question_6','question_7');
 
         
         // Set searchable column fields
-        $this->column_search = array('name','mobile','email','question_1','question_2','question_3','question_4','question_5,question_6','question_7');
+        $this->column_search = array('name','mobile','email','question_1','question_2','question_3','question_4','question_5','question_6','question_7');
         // Set default order
         $this->order = array('r.id' => 'desc');
 
-       
         
         foreach ($_POST['columns'] as $key => $value) {
                 if(!empty($value['search']['value'])){
@@ -192,15 +191,15 @@ class AdminModel extends CI_Model {
         $this->db->group_by('c.mobile');
         $this->db->from('customer c');
         // Set orderable column fields
-        $this->column_order = array(null,'name','mobile','email','birthdate','anniversary_date','c.created_at');
+        $this->column_order = array(null,'name','mobile','email','birthdate','anniversary_date','c.created_at','feedback_count');
 
         // Set searchable column fields
-        $this->column_search = array('name','mobile','email','birthdate','anniversary_date','c.created_at');
+        $this->column_search = array('name','mobile','email','birthdate','anniversary_date','c.created_at','feedback_count');
         // Set default order
         $this->order = array('c.id' => 'desc');
 
        
-        
+
         foreach ($_POST['columns'] as $key => $value) {
                 if(!empty($value['search']['value'])){
                     if($value['name'] == 'c.created_at'){
@@ -222,24 +221,33 @@ class AdminModel extends CI_Model {
                         
                     }
 
-                    if($value['name'] == 'name' || $value['name'] == 'mobile' || $value['name'] == 'email' || $value['name'] == 'birthdate' || $value['name'] == 'anniversary_date' ){
+                    if($value['name'] == 'name' || $value['name'] == 'mobile' || $value['name'] == 'email' || $value['name'] == 'birthdate' || $value['name'] == 'anniversary_date'){
                             $this->db->or_like($value['name'],$value['search']['value']);
-                     }      
+                     }
+                          
                 }
         }
 
          
          $i = 0;
         
+        
         foreach($this->column_search as $item){
             if($postData['search']['value']){
-
                 if($i===0){
-                    
-                    $this->db->group_start();
-                    $this->db->like($item, $postData['search']['value']);
+                    if($item == 'feedback_count'){
+                        $this->db->having('feedback_count',$postData['search']['value']);
+                    }else{
+                        $this->db->group_start();
+                        $this->db->like($item, $postData['search']['value']);
+                    }
                 }else{
-                    $this->db->or_like($item, $postData['search']['value']);
+                    if($item == 'feedback_count'){
+                        $this->db->having('feedback_count',$postData['search']['value']);
+                    }else{
+                        $this->db->or_like($item, $postData['search']['value']);  
+                    }
+                    
                 }
                 if(count($this->column_search) - 1 == $i){
                     $this->db->group_end();
@@ -261,7 +269,7 @@ class AdminModel extends CI_Model {
     }
 
     public function getCustomerFeedbackDates($filter){
-        $this->db->select('c.id,r.created_at');
+        $this->db->select('r.id,r.created_at');
         $this->db->where($filter);
         $this->db->join('rating r','r.customer_id = c.id');
         return $this->db->get('customer c')->result_array();

@@ -81,7 +81,7 @@
     	$('#rating thead th').each(function () {
 					    	var i = 0;
 			                var title = $(this).text();
-			                if(title == 'Sr No.' || title == 'Action'){
+			                if(title == 'Sr. No.' || title == 'Action'){
 
 			                }else if(title == 'Created At'){
 			                	$(this).html(title+'<input type="text" class="col-search-input" id="created_at"/>');
