@@ -146,9 +146,17 @@ $(document).ready(function() {
 			                var title = $(this).text();
 			                if(title == 'Sr. No.' || title == 'Action'){
 
-			                }else if(title == 'Created At'){
+			                }
+			                else if(title == 'Created At'){
 			                	$(this).html(title+'<input type="text" class="col-search-input" id="created_at"/>');
-			                }else{
+			                }
+			                else if(title == 'Birthdate'){
+			                	$(this).html(title+'<input type="text" class="col-search-input" id="birthdate"/>');
+			                }
+			                else if(title == 'Anniversary Date'){
+			                	$(this).html(title+'<input type="text" class="col-search-input" id="anniversary_date"/>');
+			                }
+			                else {
 			                	$(this).html(title+'<input type="text" class="col-search-input" />');
 			                }
 			            });
@@ -215,6 +223,20 @@ $(document).ready(function() {
 			$(function() {
 
 			  $('#created_at').daterangepicker({
+			    opens: 'left',
+			  }, function(start, end, label) {
+
+			    console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+			  });
+
+			  $('#birthdate').daterangepicker({
+			    opens: 'left',
+			  }, function(start, end, label) {
+
+			    console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+			  });
+
+			  $('#anniversary_date').daterangepicker({
 			    opens: 'left',
 			  }, function(start, end, label) {
 

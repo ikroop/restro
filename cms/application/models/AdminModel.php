@@ -207,7 +207,7 @@ class AdminModel extends CI_Model {
                         $dates            = explode('-',$created_at_date);
                         $start_date       = date('Y-m-d',strtotime($dates['0']));
                         $end_date         = date('Y-m-d',strtotime($dates['1']));
-                        $this->db->where('DATe(c.created_at) >=', $start_date);
+                        $this->db->where('DATE(c.created_at) >=', $start_date);
                         $this->db->where('DATE(c.created_at) <=', $end_date);
 
                         if(isset($_POST['order'])){
@@ -221,10 +221,49 @@ class AdminModel extends CI_Model {
                         
                     }
 
-                    if($value['name'] == 'name' || $value['name'] == 'mobile' || $value['name'] == 'email' || $value['name'] == 'birthdate' || $value['name'] == 'anniversary_date'){
+                    if($value['name'] == 'birthdate'){
+                        $created_at_date = $value['search']['value'];
+                        $dates            = explode('-',$created_at_date);
+                        $start_date       = date('Y-m-d',strtotime($dates['0']));
+                        $end_date         = date('Y-m-d',strtotime($dates['1']));
+                        $this->db->where('DATE(birthdate) >=', $start_date);
+                        $this->db->where('DATE(birthdate) <=', $end_date);
+
+                        if(isset($_POST['order'])){
+                            if($_POST['order'][0]['dir'] == 'desc'){
+                                $this->db->order_by('birthdate desc');
+                            }else{
+                                $this->db->order_by('birthdate asc');
+                            }
+                        }
+                        
+                        
+                    }
+
+                    if($value['name'] == 'anniversary_date'){
+                        $created_at_date = $value['search']['value'];
+                        $dates            = explode('-',$created_at_date);
+                        $start_date       = date('Y-m-d',strtotime($dates['0']));
+                        $end_date         = date('Y-m-d',strtotime($dates['1']));
+                        $this->db->where('DATE(anniversary_date) >=', $start_date);
+                        $this->db->where('DATE(anniversary_date) <=', $end_date);
+
+                        if(isset($_POST['order'])){
+                            if($_POST['order'][0]['dir'] == 'desc'){
+                                $this->db->order_by('anniversary_date desc');
+                            }else{
+                                $this->db->order_by('anniversary_date asc');
+                            }
+                        }
+                        
+                        
+                    }
+
+                    if($value['name'] == 'name' || $value['name'] == 'mobile' || $value['name'] == 'email'){
                             $this->db->or_like($value['name'],$value['search']['value']);
+                     }else if($value['name'] == 'feedback_count'){
+                            $this->db->having('feedback_count',$value['search']['value']);     
                      }
-                          
                 }
         }
 
@@ -243,8 +282,9 @@ class AdminModel extends CI_Model {
                     }
                 }else{
                     if($item == 'feedback_count'){
-                        $this->db->having('feedback_count',$postData['search']['value']);
-                    }else{
+                       // $this->db->having('feedback_count',$postData['search']['value']);
+                    }
+                    else{
                         $this->db->or_like($item, $postData['search']['value']);  
                     }
                     

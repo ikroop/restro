@@ -56,8 +56,8 @@ class Admin extends CI_Controller {
                 $data['dashboard']['question_7'] = isset($dashboard_data['question_7']) ?  round(($dashboard_data['question_7'] / ($dashboard_data['number_of_customer'] * 5) * 5),2) : 0;
 
                 
-                $first_date = date('Y-m-01');
-                $last_date  = date('Y-m-t');
+                $first_date = date('Y-5-01');
+                $last_date  = date('Y-5-t');
 
                 $rating_data = $this->AdminModel->getDashboardData($first_date,$last_date);
 
@@ -112,7 +112,7 @@ class Admin extends CI_Controller {
         // Fetch member's records
         $memData = $this->AdminModel->getCustomerDetailsRows($_POST);
         
-   
+      //  echo $this->db->last_query();exit;
         $i = $_POST['start'];
         foreach($memData as $member){
 

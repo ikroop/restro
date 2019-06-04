@@ -94,4 +94,11 @@ class Admin extends CI_Controller {
 			$this->load->view('feedback');
 		}
 	}
+	public function sendmsg(){
+		$to = 'naikjay75@gmail.com';
+		$from = 'smartads.darshan@gmail.com';
+		$subject = 'Thanks';
+		$message = ' Thanks for your valuable feedback';
+		$send_mail = sendEmail_helper($to,$from,$subject,$message);
+	}
 }

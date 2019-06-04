@@ -444,7 +444,10 @@ var GoogleLineBasic = function() {
                     textStyle: {
                         fontSize: 12
                     }
-                }
+                },
+                vAxis: { 
+                        ticks: [0.5,1,1.5,2,2.5,3]
+                    }
             };
 
             // Draw chart
