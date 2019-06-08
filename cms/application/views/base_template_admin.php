@@ -34,8 +34,8 @@
     <script src="<?php echo base_url(); ?>js/plugins/visualization/d3/d3_tooltip.js"></script>
     <script src="<?php echo base_url(); ?>js/plugins/forms/styling/switchery.min.js"></script>
     <script src="<?php echo base_url(); ?>js/plugins/forms/selects/bootstrap_multiselect.js"></script>
-    <script src="<?php echo base_url(); ?>js/plugins/ui/moment/moment.min.js"></script>
-    <script src="<?php echo base_url(); ?>js/plugins/pickers/daterangepicker.js"></script>
+<!--     <script src="<?php echo base_url(); ?>js/plugins/ui/moment/moment.min.js"></script>
+    <script src="<?php echo base_url(); ?>js/plugins/pickers/daterangepicker.js"></script> -->
     <script src="<?php echo base_url()?>js/plugins/tables/datatables/datatables.min.js"></script>
     <script src="<?php echo base_url()?>js/plugins/forms/selects/select2.min.js"></script>
 
@@ -54,6 +54,15 @@
     <script src="<?php echo base_url(); ?>js/demo_pages/form_checkboxes_radios.js"></script>
 
     <script src="<?php echo base_url()?>js/charts/loader.js"></script>
+
+    <link href="<?php echo base_url()?>css/bootstrap-datepicker3.min.css" rel="stylesheet">
+    <script src="<?php echo base_url()?>js/bootstrap-datepicker.min.js"></script>
+
+    <link href="<?php echo base_url()?>css/daterangepicker.css" rel="stylesheet">
+    <script src="<?php echo base_url()?>js/moment.min.js"></script>
+    <script src="<?php echo base_url()?>js/daterangepicker.js"></script>
+    
+
    
     <!-- /theme JS files -->
 

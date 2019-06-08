@@ -61,6 +61,8 @@ class Admin extends CI_Controller {
 
                 $rating_data = $this->AdminModel->getDashboardData($first_date,$last_date);
 
+                //echo "<pre>";
+                //print_r($rating_data);exit;
 
                 $daily_rating = array();
                 $i = 0;
@@ -68,17 +70,17 @@ class Admin extends CI_Controller {
                 foreach($rating_data as $row){
                     
                     $daily_rating[$i]['created_at'] = date('d-m-Y',strtotime($row['created_at']));
-                    $daily_rating[$i]['question_1'] = round(($row['question_1'] * 5) / ($row['no_of_customer'] * 9),2) ;
-                    $daily_rating[$i]['question_2'] = round(($row['question_2'] * 5) / ($row['no_of_customer'] * 9),2) ;
-                    $daily_rating[$i]['question_3'] = round(($row['question_3'] * 5) / ($row['no_of_customer'] * 9),2) ;
-                    $daily_rating[$i]['question_4'] = round(($row['question_4'] * 5) / ($row['no_of_customer'] * 9),2) ;
-                    $daily_rating[$i]['question_5'] = round(($row['question_5'] * 5) / ($row['no_of_customer'] * 9),2) ;
-                    $daily_rating[$i]['question_6'] = round(($row['question_6'] * 5) / ($row['no_of_customer'] * 9),2) ;
-                    $daily_rating[$i]['question_7'] = round(($row['question_7'] * 5) / ($row['no_of_customer'] * 9),2) ;
+                    $daily_rating[$i]['question_1'] = round(($row['question_1'] * 5) / ($row['no_of_customer'] * 3),2) ;
+                    $daily_rating[$i]['question_2'] = round(($row['question_2'] * 5) / ($row['no_of_customer'] * 3),2) ;
+                    $daily_rating[$i]['question_3'] = round(($row['question_3'] * 5) / ($row['no_of_customer'] * 3),2) ;
+                    $daily_rating[$i]['question_4'] = round(($row['question_4'] * 5) / ($row['no_of_customer'] * 3),2) ;
+                    $daily_rating[$i]['question_5'] = round(($row['question_5'] * 5) / ($row['no_of_customer'] * 3),2) ;
+                    $daily_rating[$i]['question_6'] = round(($row['question_6'] * 5) / ($row['no_of_customer'] * 3),2) ;
+                    $daily_rating[$i]['question_7'] = round(($row['question_7'] * 5) / ($row['no_of_customer'] * 3),2) ;
                     $i++;
                 }
                   
-
+                
 
                 $data['rating']    = $daily_rating;
 
@@ -112,7 +114,9 @@ class Admin extends CI_Controller {
         // Fetch member's records
         $memData = $this->AdminModel->getCustomerDetailsRows($_POST);
         
-      //  echo $this->db->last_query();exit;
+
+        // echo $this->db->last_query();exit;
+
         $i = $_POST['start'];
         foreach($memData as $member){
 
@@ -155,7 +159,8 @@ class Admin extends CI_Controller {
             "recordsTotal" => $this->AdminModel->countAllCustomerDetails(),
             "recordsFiltered" => $this->AdminModel->countFilteredCustomerDetails($_POST),
             "data" => $data,
-        );
+        );  
+
         
         // Output to JSON format
         echo json_encode($output);
@@ -188,7 +193,7 @@ class Admin extends CI_Controller {
 
         if(isset($_POST) && !empty($_POST)){
             $first_date = date('Y-m-d',strtotime($this->input->post('start_date')));
-            $last_date = date('Y-m-d',strtotime($this->input->post('end_date')));
+            $last_date  = date('Y-m-d',strtotime($this->input->post('end_date')));
         }else{
             $first_date = date('Y-m-01');
             $last_date  = date('Y-m-t');
@@ -201,16 +206,17 @@ class Admin extends CI_Controller {
         $i = 0;
         $count = 0;
         foreach($rating_data as $row){
-            $daily_rating[$i]['created_at'] = date('d-m-Y',strtotime($row['created_at']));
-            $daily_rating[$i]['question_1'] = round(($row['question_1'] * 5) / ($row['no_of_customer'] * 9),2) ;
-            $daily_rating[$i]['question_2'] = round(($row['question_2'] * 5) / ($row['no_of_customer'] * 9),2) ;
-            $daily_rating[$i]['question_3'] = round(($row['question_3'] * 5) / ($row['no_of_customer'] * 9),2) ;
-            $daily_rating[$i]['question_4'] = round(($row['question_4'] * 5) / ($row['no_of_customer'] * 9),2) ;
-            $daily_rating[$i]['question_5'] = round(($row['question_5'] * 5) / ($row['no_of_customer'] * 9),2) ;
-            $daily_rating[$i]['question_6'] = round(($row['question_6'] * 5) / ($row['no_of_customer'] * 9),2) ;
-            $daily_rating[$i]['question_7'] = round(($row['question_7'] * 5) / ($row['no_of_customer'] * 9),2) ;
-            $i++;
-        }
+                    
+                    $daily_rating[$i]['created_at'] = date('d-m-Y',strtotime($row['created_at']));
+                    $daily_rating[$i]['question_1'] = round(($row['question_1'] * 5) / ($row['no_of_customer'] * 3),2) ;
+                    $daily_rating[$i]['question_2'] = round(($row['question_2'] * 5) / ($row['no_of_customer'] * 3),2) ;
+                    $daily_rating[$i]['question_3'] = round(($row['question_3'] * 5) / ($row['no_of_customer'] * 3),2) ;
+                    $daily_rating[$i]['question_4'] = round(($row['question_4'] * 5) / ($row['no_of_customer'] * 3),2) ;
+                    $daily_rating[$i]['question_5'] = round(($row['question_5'] * 5) / ($row['no_of_customer'] * 3),2) ;
+                    $daily_rating[$i]['question_6'] = round(($row['question_6'] * 5) / ($row['no_of_customer'] * 3),2) ;
+                    $daily_rating[$i]['question_7'] = round(($row['question_7'] * 5) / ($row['no_of_customer'] * 3),2) ;
+                    $i++;
+                }
           
         $data['rating']    = $daily_rating;
         $data['main_view'] = 'dashboard';
@@ -222,14 +228,13 @@ class Admin extends CI_Controller {
         $this->load->view('base_template_admin',$data);
     }
     public function getRatingDetails(){
-        // echo "<pre>";
-        // print_r($_POST);exit;
+
         $data = $row = array();
         
         // Fetch member's records
         $memData = $this->AdminModel->getRatingDetailsRows($_POST);
         
-        // echo $this->db->last_query();exit;
+
         $i = $_POST['start'];
         foreach($memData as $member){
 

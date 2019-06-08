@@ -151,10 +151,10 @@ $(document).ready(function() {
 			                	$(this).html(title+'<input type="text" class="col-search-input" id="created_at"/>');
 			                }
 			                else if(title == 'Birthdate'){
-			                	$(this).html(title+'<input type="text" class="col-search-input" id="birthdate"/>');
+			                	$(this).html(title+'<input type="text" class="col-search-input birthdate"/>');
 			                }
 			                else if(title == 'Anniversary Date'){
-			                	$(this).html(title+'<input type="text" class="col-search-input" id="anniversary_date"/>');
+			                	$(this).html(title+'<input type="text" class="col-search-input anniversary_date"/>');
 			                }
 			                else {
 			                	$(this).html(title+'<input type="text" class="col-search-input" />');
@@ -199,7 +199,7 @@ $(document).ready(function() {
 									    { "name": "email",  "targets": 3 },
 									    { "name": "birthdate",    "targets": 4 },
 									    { "name": "anniversary_date",    "targets": 5 },
-									    { "name": "created_at",    "targets": 6 },
+									    { "name": "c.created_at",    "targets": 6 },
 									    { "name": "feedback_count",    "targets": 7 },
 
 									   ]
@@ -210,6 +210,8 @@ $(document).ready(function() {
 			                var table = this;
 			                $('input', this.header()).on('keyup change', function () {
 			                    if (table.search() !== this.value) {
+			                    	   table.search( '' )
+ 									   table.columns().search( '' )
 			                    	   table.search(this.value).draw();
 			                    }
 			                });
@@ -222,26 +224,36 @@ $(document).ready(function() {
 
 			$(function() {
 
-			  $('#created_at').daterangepicker({
-			    opens: 'left',
-			  }, function(start, end, label) {
+			var start = moment().subtract(29, 'days');
+		    var end = moment();
 
-			    console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
-			  });
+		    function cb(start, end) {
+		        $('#created_at').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+		    }
 
-			  $('#birthdate').daterangepicker({
-			    opens: 'left',
-			  }, function(start, end, label) {
+		    $('#created_at').daterangepicker({
+		        startDate: start,
+		        endDate: end,
+		        ranges: {
+		           'Today': [moment(), moment()],
+		           'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+		           'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+		           'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+		           'This Month': [moment().startOf('month'), moment().endOf('month')],
+		           'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+		        }
+		    }, cb);
 
-			    console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
-			  });
+		    cb(start, end);
 
-			  $('#anniversary_date').daterangepicker({
-			    opens: 'left',
-			  }, function(start, end, label) {
+			  $('.birthdate').datepicker({
+				    autoclose: true
+				});
 
-			    console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
-			  });
+			  $('.anniversary_date').datepicker({
+				    autoclose: true
+				});
+
 			});
 			
 		});

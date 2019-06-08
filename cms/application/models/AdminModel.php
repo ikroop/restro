@@ -79,7 +79,7 @@ class AdminModel extends CI_Model {
             $this->db->limit($postData['length'], $postData['start']);
         }
         $query = $this->db->get();
-        
+
         return $query->result();
     }
     public function countAllRatingDetails(){
@@ -113,7 +113,7 @@ class AdminModel extends CI_Model {
                         $dates            = explode('-',$created_at_date);
                         $start_date       = date('Y-m-d',strtotime($dates['0']));
                         $end_date         = date('Y-m-d',strtotime($dates['1']));
-                        $this->db->where('DATe(r.created_at) >=', $start_date);
+                        $this->db->where('DATE(r.created_at) >=', $start_date);
                         $this->db->where('DATE(r.created_at) <=', $end_date);
 
                         if(isset($_POST['order'])){
@@ -222,12 +222,14 @@ class AdminModel extends CI_Model {
                     }
 
                     if($value['name'] == 'birthdate'){
-                        $created_at_date = $value['search']['value'];
-                        $dates            = explode('-',$created_at_date);
-                        $start_date       = date('Y-m-d',strtotime($dates['0']));
-                        $end_date         = date('Y-m-d',strtotime($dates['1']));
-                        $this->db->where('DATE(birthdate) >=', $start_date);
-                        $this->db->where('DATE(birthdate) <=', $end_date);
+                        // $created_at_date = $value['search']['value'];
+                        // $dates            = explode('-',$created_at_date);
+                        // $start_date       = date('Y-m-d',strtotime($dates['0']));
+                        // $end_date         = date('Y-m-d',strtotime($dates['1']));
+                        // $this->db->where('DATE(birthdate) >=', $start_date);
+                        // $this->db->where('DATE(birthdate) <=', $end_date);
+
+                        $this->db->where('MONTH(birthdate) =', date('m',strtotime($value['search']['value'])));
 
                         if(isset($_POST['order'])){
                             if($_POST['order'][0]['dir'] == 'desc'){
@@ -241,12 +243,10 @@ class AdminModel extends CI_Model {
                     }
 
                     if($value['name'] == 'anniversary_date'){
-                        $created_at_date = $value['search']['value'];
-                        $dates            = explode('-',$created_at_date);
-                        $start_date       = date('Y-m-d',strtotime($dates['0']));
-                        $end_date         = date('Y-m-d',strtotime($dates['1']));
-                        $this->db->where('DATE(anniversary_date) >=', $start_date);
-                        $this->db->where('DATE(anniversary_date) <=', $end_date);
+                        // $created_at_date = $value['search']['value'];
+                        // $start_date       = date('Y-m-01');
+                        // $end_date         = date('Y-m-d',strtotime($value['search']['value']));
+                        $this->db->where('MONTH(anniversary_date) =', date('m',strtotime($value['search']['value'])));
 
                         if(isset($_POST['order'])){
                             if($_POST['order'][0]['dir'] == 'desc'){

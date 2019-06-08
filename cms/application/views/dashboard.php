@@ -144,8 +144,9 @@
 
 
 					</div>
-              <?php if($rating) {?>
+             <div class="card-body">
               <div class="row">
+              <div class="col-xs-12">
               <form method="post" action="<?php echo base_url('Admin/dashboard')?>" class="header-elements-inline">
                 <div class="form-group" style="margin-right: 2%">
                   <label>Start Date:</label>
@@ -162,7 +163,8 @@
                 </div>
               </form>
               </div>
-                  
+            </div>
+                   <?php if($rating) {?>
         					<div class="card-header header-elements-inline">
         						<h5 class="card-title">Quality of food</h5>
         					</div>
@@ -246,12 +248,21 @@
                             <div class="chart" id="google-line-question-7"></div>
                         </div>
                     </div>
+                  </div>
+                  <?php }else{ ?>
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-xs-12 text-center">
+                          <h1>No Data Found</h1>
+                        </div>
+                      </div>
+                    </div>
                   <?php } ?>
 				</div>
 				<!-- /simple line chart -->
 
 
-			</div>
+		</div>
 			<!-- /content area -->
 <script type="text/javascript">
 				/* ------------------------------------------------------------------------------
@@ -446,7 +457,7 @@ var GoogleLineBasic = function() {
                     }
                 },
                 vAxis: { 
-                        ticks: [0.5,1,1.5,2,2.5,3]
+                        ticks: [0.5,1,1.5,2,2.5,3,3.5,4,4.5,5]
                     }
             };
 
